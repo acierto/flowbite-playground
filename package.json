@@ -1,0 +1,63 @@
+{
+  "name": "my-qwik-basic-starter",
+  "description": "Demo app with sample routes",
+  "engines": {
+    "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
+  },
+  "engines-annotation": "Mostly required by sharp which needs a Node-API v9 compatible runtime",
+  "private": true,
+  "trustedDependencies": [
+    "sharp"
+  ],
+  "trustedDependencies-annotation": "Needed for bun to allow running install scripts",
+  "type": "module",
+  "scripts": {
+    "build": "qwik build",
+    "build.client": "vite build",
+    "build.preview": "vite build --ssr src/entry.preview.tsx",
+    "build.server": "vite build -c adapters/cloudflare-pages/vite.config.ts",
+    "build.types": "tsc --incremental --noEmit",
+    "deploy": "pnpm run build && wrangler pages deploy",
+    "dev": "vite --mode ssr",
+    "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
+    "fmt": "prettier --write .",
+    "fmt.check": "prettier --check .",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "preview": "pnpm run build && wrangler pages dev",
+    "serve": "wrangler pages dev ./dist --compatibility-flags=nodejs_als",
+    "start": "vite --open --mode ssr",
+    "qwik": "qwik",
+    "cf-typegen": "wrangler types"
+  },
+  "devDependencies": {
+    "@builder.io/qwik": "^1.12.0",
+    "@builder.io/qwik-city": "^1.12.0",
+    "@cloudflare/workers-types": "^4.20250321.0",
+    "@tailwindcss/postcss": "^4.0.16",
+    "@tailwindcss/typography": "^0.5.15",
+    "@tailwindcss/vite": "^4.0.15",
+    "@types/eslint": "8.56.10",
+    "@types/node": "20.14.11",
+    "typescript-eslint": "^8.28.0",
+    "@typescript-eslint/eslint-plugin": "7.16.1",
+    "@typescript-eslint/parser": "7.16.1",
+    "eslint": "8.57.0",
+    "flowbite-qwik": "^0.38.3",
+    "flowbite-qwik-icons": "^0.1.9",
+    "eslint-plugin-qwik": "^1.12.0",
+    "prettier": "3.3.3",
+    "tailwindcss": "^4.0.16",
+    "typescript": "5.4.5",
+    "undici": "*",
+    "vite": "6.2.3",
+    "vite-tsconfig-paths": "^5.1.4",
+    "wrangler": "^4.4.0"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "flowbite": "^3.1.2",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7"
+  }
+}
